@@ -13,10 +13,3 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
     
-
-class Wajahat(models.Model):
-    name = models.CharField(max_length=50)
-
-    class Meta:
-        verbose_name = "Wajahat Murtaza"
-        verbose_name_plural = "Wajahat Murtaza"
