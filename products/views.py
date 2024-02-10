@@ -12,3 +12,10 @@ def shop(request):
         "products":products
     }
     return render(request, 'shop.html', context)
+
+def detail(request, slug):
+    product = Product.objects.get(slug=slug)
+    context = {
+        "product":product,
+    }
+    return render(request, 'detail.html', context)

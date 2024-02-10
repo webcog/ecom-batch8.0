@@ -8,6 +8,9 @@ class Product(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE) 
     product_image = models.ImageField(upload_to='product/')
+    product_image_two = models.ImageField(upload_to='product/')
+    product_image_three = models.ImageField(upload_to='product/')
+    product_image_four = models.ImageField(upload_to='product/')
     # PILLOW 
     # media setup
     created_at = models.DateTimeField(auto_now_add=True)
