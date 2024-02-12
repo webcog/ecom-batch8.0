@@ -5,6 +5,8 @@ from django.db import models
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True, null=True)
+    cat_img = models.ImageField(upload_to="cat_img/", null=True, blank=True)
+    
 
     class Meta:
         verbose_name = "Categories"

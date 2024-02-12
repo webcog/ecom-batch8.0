@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}
+  Login - Webcog
+{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Login Page</span></h2>
+    </div>
+    <form action="">
+        <div>
+            <label for="" class="form-label my-3">Username<span class="text-danger fw-bold">*</span></label>
+            <input type="text" class="form-control p-4" placeholder="Username">
+        </div>
+        <div>
+            <label for="" class="form-label my-3">Passowrd<span class="text-danger fw-bold">*</span></label>
+            <input type="password" class="form-control p-4" placeholder="Password">
+        </div>
+        <div class="d-flex justify-content-end mt-1">
+            <span class="">
+               <a href="{% url 'for_one' %}">
+                   Forgot Password
+               </a> 
+            </span>
+        </div>
+        <div class="my-3">
+            <input type="checkbox" class="">
+            <label for="">Remeber Me</label>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary btn-block border-0 py-3">Login</button>
+        </div>
+    </form>
+
+    <div class="text-center mt-5">
+        <p>
+            Don't have an account?
+            <a href="{% url 'signup' %}" class="text-primary">Sign Up</a>
+        </p>
+    </div>
+</div>
+
+
+{% endblock content %}

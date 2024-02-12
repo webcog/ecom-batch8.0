@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Signup - Webcog
+{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Signup Page</span></h2>
+    </div>
+    <form action="">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">First Name<span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control p-4" placeholder="First Name">
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Last Name<span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control p-4" placeholder="Last Name">
+            </div>
+        
+            <div class="col-md-12">
+                <label for="" class="form-label my-3">Username<span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control p-4" placeholder="Username">
+            </div>
+
+            <div class="col-md-12">
+                <label for="" class="form-label my-3">Email<span class="text-danger fw-bold">*</span></label>
+                <input type="email" class="form-control p-4" placeholder="Email">
+            </div>
+
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Password<span class="text-danger fw-bold">*</span></label>
+                <input type="password" class="form-control p-4" placeholder="Passowrd">
+            </div>
+
+            
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Confirm Password<span class="text-danger fw-bold">*</span></label>
+                <input type="password" class="form-control p-4" placeholder="Confirm Passowrd">
+            </div>
+
+            <div class="col-md-12 mt-3">
+                <input type="checkbox" class="">
+                <label for="">I accept <a href="">Terms and Conditions</a> </label>
+            </div>
+
+            <div class="col-md-12 mt-3">
+                <button type="submit" class="btn btn-primary btn-block border-0 py-3">Create Account</button>
+            </div>
+        
+    </div>
+    </form>
+
+    <div class="text-center mt-5">
+        <p>
+            Already have an account?
+            <a href="{% url 'login' %}" class="text-primary">Login</a>
+        </p>
+    </div>
+</div>
+
+
+{% endblock content %}
