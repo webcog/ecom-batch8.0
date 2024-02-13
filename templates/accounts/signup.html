@@ -9,38 +9,38 @@
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Signup Page</span></h2>
     </div>
-    <form action="">
+    <form method="post">
+        {% csrf_token %}
         <div class="row">
             <div class="col-md-6">
                 <label for="" class="form-label my-3">First Name<span class="text-danger fw-bold">*</span></label>
-                <input type="text" class="form-control p-4" placeholder="First Name">
+                <input type="text" name="f_name" class="form-control p-4" placeholder="First Name">
             </div>
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Last Name<span class="text-danger fw-bold">*</span></label>
-                <input type="text" class="form-control p-4" placeholder="Last Name">
+                <input type="text" name="l_name" class="form-control p-4" placeholder="Last Name">
             </div>
         
             <div class="col-md-12">
                 <label for="" class="form-label my-3">Username<span class="text-danger fw-bold">*</span></label>
-                <input type="text" class="form-control p-4" placeholder="Username">
+                <input type="text" name="username" class="form-control p-4" placeholder="Username">
             </div>
 
             <div class="col-md-12">
                 <label for="" class="form-label my-3">Email<span class="text-danger fw-bold">*</span></label>
-                <input type="email" class="form-control p-4" placeholder="Email">
+                <input type="email" name="email" class="form-control p-4" placeholder="Email">
             </div>
 
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Password<span class="text-danger fw-bold">*</span></label>
-                <input type="password" class="form-control p-4" placeholder="Passowrd">
+                <input type="password" name="password1" class="form-control p-4" placeholder="Passowrd">
             </div>
-
             
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Confirm Password<span class="text-danger fw-bold">*</span></label>
-                <input type="password" class="form-control p-4" placeholder="Confirm Passowrd">
+                <input type="password" name="password2" class="form-control p-4" placeholder="Confirm Passowrd">
             </div>
 
             <div class="col-md-12 mt-3">

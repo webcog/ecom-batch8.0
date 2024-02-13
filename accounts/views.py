@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -8,6 +9,17 @@ def login_page(request):
 
 
 def signup_page(request):
+    if request.method == "POST":
+        first_name = request.POST.get("f_name")
+        last_name = request.POST.get("l_name")
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+
+        
+
+
     return render(request, 'accounts/signup.html')
 
 
