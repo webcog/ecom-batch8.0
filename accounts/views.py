@@ -1,10 +1,23 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout
+
 
 # Create your views here.
 
 def login_page(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            return HttpResponse("Your Username or Password is not Match")
+
     return render(request, 'accounts/login.html')
 
 
@@ -26,6 +39,8 @@ def signup_page(request):
         else:
             if User.objects.filter(email=email).exists():
                 return HttpResponse("Your Email Is Already Taken")
+            elif User.objects.filter(username=username).exists():
+                return HttpResponse("Your Username Is Already Exist")
             else:
                 my_user = User.objects.create_user(username,email,password1)
                 my_user.save()
@@ -33,10 +48,13 @@ def signup_page(request):
 
         # username,email,password 
 
-        
-
 
     return render(request, 'accounts/signup.html')
+
+
+def LogoutPage(request):
+    logout(request)
+    return redirect("login")
 
 
 
