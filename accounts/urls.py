@@ -1,11 +1,11 @@
 from django.urls import path
-from accounts.views import login_page, signup_page, forgot_one, forgot_two, forgot_three, forgot_four, LogoutPage
+from accounts.views import login_page, signup_page, LogoutPage
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path("login/", login_page, name="login"),
     path("register/", signup_page, name="signup"),
     path("logout/", LogoutPage, name="logout"),
-    path("forgot_password/", forgot_one, name="for_one"),
-    path("forgot_password_two/", forgot_two, name="for_two"),
-    path("forgot_password_three/", forgot_three, name="for_three"),
-    path("forgot_password_four/", forgot_four, name="for_four"),
 ]
+
+
+# https://docs.djangoproject.com/en/5.0/topics/auth/default/
