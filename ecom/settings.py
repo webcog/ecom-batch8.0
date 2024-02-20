@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'category', 
     'products',
     'accounts',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -123,4 +124,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'wajahatmurtaza144@gmail.com'
-EMAIL_HOST_PASSWORD = 'hzbvmyzwimwuwefc'
+EMAIL_HOST_PASSWORD = 'hzbvmyzwimwuwefc'  #app password
+
+
+

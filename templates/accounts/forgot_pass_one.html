@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block title %}
   Forgot - Webcog
 {% endblock title %}
@@ -8,15 +9,21 @@
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Forgot Password</span></h2>
     </div>
-    <form action="">
+    <form method="post">
+        {% csrf_token %}
+
+       
         <div>
             <label for="" class="form-label my-3">Email<span class="text-danger fw-bold">*</span></label>
-            <input type="email" class="form-control p-4" placeholder="Email">
+            {% render_field form.email  class="form-control p-4" placeholder="Email"  %}
+           
         </div>
+
+
+      
         <br>
         <div>
             <button type="submit" class="btn btn-primary btn-block border-0 py-3">Sent Reset Link</button>
-            <a class="btn btn-primary btn-block border-0 py-3" href="{% url 'for_two' %}">Two</a>
         </div>
     </form>
 
