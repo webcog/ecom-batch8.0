@@ -14,7 +14,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=50, blank=True, null=True) 
     profile_image = models.ImageField(upload_to="profile/", default="profile_default.png", blank=True, null=True)
     country = models.CharField(max_length=200,  null=True, choices=CountryField().choices + [('', 'Select Country')])
-
+    
 
     def __str__(self):
         return self.user.username
