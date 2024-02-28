@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-
+from accounts.models import Profile
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -61,3 +62,25 @@ def LogoutPage(request):
     return redirect("login")
 
 
+@login_required(login_url="login")
+def update_profile(request, username):
+    user = get_object_or_404(User,username=username)
+    user_profile = get_object_or_404(Profile, user=user)
+    if request.method == 'POST':
+        user.first_name = request.POST.get('f_name')
+        user.last_name = request.POST.get('l_name')
+        user_profile.mobile =  request.POST.get('phone')
+        user_profile.country =  request.POST.get('country')
+        user_profile.city =  request.POST.get('city')
+        user_profile.postal_code =  request.POST.get('postal')
+        user_profile.address_one =  request.POST.get('address_one')
+        user_profile.address_two =  request.POST.get('address_two')
+        user_profile.bio =  request.POST.get('bio')
+        user.save()
+        user_profile.save()
+        return redirect("index")
+    
+
+
+
+    return render(request, 'accounts/profile_update.html')

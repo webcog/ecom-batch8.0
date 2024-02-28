@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}
+  Profile Update - Webcog
+{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Profile UPdate</span></h2>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">First Name<span class="text-danger fw-bold">*</span></label>
+                <input type="text" name="f_name" class="form-control p-4" placeholder="First Name" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Last Name<span class="text-danger fw-bold">*</span></label>
+                <input type="text" name="l_name" class="form-control p-4" placeholder="Last Name" >
+            </div>
+        
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Phone<span class="text-danger fw-bold">*</span></label>
+                <input type="tel" name="phone" class="form-control p-4" placeholder="PHone NUmber" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">COuntry<span class="text-danger fw-bold">*</span></label>
+                <input type="text" name="country" class="form-control p-4" placeholder="COuntry" >
+            </div>
+
+
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">City<span class="text-danger fw-bold">*</span></label>
+                <input type="text" name="city" class="form-control p-4" placeholder="City" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Postal COde<span class="text-danger fw-bold">*</span></label>
+                <input type="number" name="postal" class="form-control p-4" placeholder="Postal COde" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Adress One<span class="text-danger fw-bold">*</span></label>
+                <input type="text" name="address_one" class="form-control p-4" placeholder="CIty Abc ..." >
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label my-3">Adress Two</label>
+                <input type="text" name="address_two" class="form-control p-4" placeholder="CIty Abc ..." >
+            </div>
+
+            <div class="col-md-12">
+                <label for="" class="form-label my-3">Bio</label>
+                <textarea name="bio" id=""  class="form-control p-4" placeholder="Bio....."  cols="30" rows="3"></textarea>
+
+            </div>
+           
+          
+            <div class="col-md-12 mt-3">
+                <button type="submit" class="btn btn-primary btn-block border-0 py-3">UPdate Profile</button>
+            </div>
+        
+    </div>
+
+
+    </form>
+
+
+</div>
+
+
+{% endblock content %}

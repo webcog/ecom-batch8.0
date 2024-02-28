@@ -10,7 +10,7 @@ class Profile(models.Model):
     mobile = models.CharField(max_length=11, blank=True, null=True)
     address_one = models.TextField(blank=True, null=True)
     address_two = models.TextField(blank=True, null=True)
-    postal_code = models.IntegerField( blank=True, null=True)
+    postal_code = models.CharField(max_length=5,  blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True) 
     profile_image = models.ImageField(upload_to="profile/", default="profile_default.png", blank=True, null=True)
     country = models.CharField(max_length=200,  null=True, choices=CountryField().choices + [('', 'Select Country')])
