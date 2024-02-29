@@ -67,6 +67,11 @@ def update_profile(request, username):
     user = get_object_or_404(User,username=username)
     user_profile = get_object_or_404(Profile, user=user)
     if request.method == 'POST':
+        profile_image = request.FILES.get('p_img')
+        user_profile.profile_image = profile_image
+
+
+
         user.first_name = request.POST.get('f_name')
         user.last_name = request.POST.get('l_name')
         user_profile.mobile =  request.POST.get('phone')
@@ -80,7 +85,9 @@ def update_profile(request, username):
         user_profile.save()
         return redirect("index")
     
+    context = {
+        "user_profile":user_profile,
+        'user':user,
 
-
-
-    return render(request, 'accounts/profile_update.html')
+    }
+    return render(request, 'accounts/profile_update.html', context)

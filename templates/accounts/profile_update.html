@@ -9,55 +9,85 @@
         <h2 class="section-title px-5"><span class="px-2">Profile UPdate</span></h2>
     </div>
     
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="row">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 details">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{ user_profile.profile_image.url }}" style="height: 150px;width: 150px;border: 2px solid black;border-radius: 50%;float: right;"  alt="" class="img-rounded">
+
+                            </div>
+                            <div class="col-md-6">
+                                <blockquote>
+                                    <h5>{{user.first_name}} {{ user.last_name }}</h5>
+                                    <small><cite title="Source Title"> {{ user_profile.city }},  {{ user_profile.country }}<i class="icon-map-marker"></i></cite></small>
+                                  </blockquote>
+                                  <p>
+                                    {{ user_profile.bio }}
+                                  </p>
+                            </div>
+                        </div>
+                      
+                    </div>
+                      <div class="col-md-6 ">
+                        <label for="">Upload Image</label>
+                        <input type="file" class="form-control border-0" name="p_img">
+                      </div>
+                </div>
+            </div>
+
+<hr>
+
             <div class="col-md-6">
                 <label for="" class="form-label my-3">First Name<span class="text-danger fw-bold">*</span></label>
-                <input type="text" name="f_name" class="form-control p-4" placeholder="First Name" >
+                <input type="text" name="f_name" class="form-control p-4" value="{{ user.first_name }}" placeholder="First Name" >
             </div>
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Last Name<span class="text-danger fw-bold">*</span></label>
-                <input type="text" name="l_name" class="form-control p-4" placeholder="Last Name" >
+                <input type="text" name="l_name" class="form-control p-4"  value="{{ user.last_name }}"  placeholder="Last Name" >
             </div>
         
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Phone<span class="text-danger fw-bold">*</span></label>
-                <input type="tel" name="phone" class="form-control p-4" placeholder="PHone NUmber" >
+                <input type="tel" name="phone" class="form-control p-4"  value="{{ user_profile.mobile }}"  placeholder="PHone NUmber" >
             </div>
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">COuntry<span class="text-danger fw-bold">*</span></label>
-                <input type="text" name="country" class="form-control p-4" placeholder="COuntry" >
+                <input type="text" name="country" class="form-control p-4"  value="{{ user_profile.country }}" placeholder="COuntry" >
             </div>
 
 
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">City<span class="text-danger fw-bold">*</span></label>
-                <input type="text" name="city" class="form-control p-4" placeholder="City" >
+                <input type="text" name="city" class="form-control p-4"   value="{{ user_profile.city }}"  placeholder="City" >
             </div>
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Postal COde<span class="text-danger fw-bold">*</span></label>
-                <input type="number" name="postal" class="form-control p-4" placeholder="Postal COde" >
+                <input type="number" name="postal" class="form-control p-4" value="{{user_profile.postal_code}}" placeholder="Postal COde" >
             </div>
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Adress One<span class="text-danger fw-bold">*</span></label>
-                <input type="text" name="address_one" class="form-control p-4" placeholder="CIty Abc ..." >
+                <input type="text" name="address_one" class="form-control p-4" value="{{user_profile.address_one}}" placeholder="CIty Abc ..." >
             </div>
 
             <div class="col-md-6">
                 <label for="" class="form-label my-3">Adress Two</label>
-                <input type="text" name="address_two" class="form-control p-4" placeholder="CIty Abc ..." >
+                <input type="text" name="address_two" class="form-control p-4"  value="{{user_profile.address_two}}"  placeholder="CIty Abc ..." >
             </div>
 
             <div class="col-md-12">
                 <label for="" class="form-label my-3">Bio</label>
-                <textarea name="bio" id=""  class="form-control p-4" placeholder="Bio....."  cols="30" rows="3"></textarea>
+                <textarea name="bio" id=""  class="form-control p-4" placeholder="Bio....."  cols="30" rows="3">{{user_profile.bio }}</textarea>
 
             </div>
            
