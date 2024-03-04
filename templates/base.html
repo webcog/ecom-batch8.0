@@ -137,6 +137,7 @@
                             <a href="{% url 'signup' %}" class="nav-item nav-link">Register</a>
 
                             {% else %}
+                            <a href="{% url 'password_change' %}" class="nav-item nav-link">Change Password</a>
                             <a href="{% url 'profile_update' request.user.username %}" class="nav-item nav-link">Profile UPdate</a>
 
                             <a href="" data-toggle="modal" data-target="#exampleModal" class="nav-item nav-link">Logout</a>
