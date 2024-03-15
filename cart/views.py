@@ -17,8 +17,21 @@ def add_to_cart(request, slug):
 
 
 def cart(request):
-    cart_items =  CartItems.objects.filter(cart__is_paid=False, cart__user=request.user)
+    # cart_items =  CartItems.objects.filter(cart__is_paid=False, cart__user=request.user)
+
+    cart = Cart.objects.filter(user=request.user, is_paid=False).first()
+    cart_items = CartItems.objects.filter(cart=cart)
+
+    subtotal = sum(item.total_price() for item in cart_items )
+    # 2% shipping from subtotal     
+    shipping = 0.02 * subtotal
+    total = subtotal + shipping
+
+    
     context = {
         'cart_items':cart_items,
+        'subtotal':subtotal,
+        'shipping':shipping,
+        'total':total
     }
     return render(request, 'cart/cart.html', context)
