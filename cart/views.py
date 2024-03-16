@@ -15,7 +15,7 @@ def add_to_cart(request, slug):
 
     return redirect('cart')
 
-
+@login_required(login_url='login')
 def cart(request):
     # cart_items =  CartItems.objects.filter(cart__is_paid=False, cart__user=request.user)
 
@@ -24,14 +24,26 @@ def cart(request):
 
     subtotal = sum(item.total_price() for item in cart_items )
     # 2% shipping from subtotal     
-    shipping = 0.02 * subtotal
-    total = subtotal + shipping
+    tax = 0.02 * subtotal
+    shipping = 180
+    total = subtotal + shipping + tax
 
     
     context = {
         'cart_items':cart_items,
         'subtotal':subtotal,
         'shipping':shipping,
-        'total':total
+        'total':total,
+        'tax':tax,
     }
     return render(request, 'cart/cart.html', context)
+
+
+
+@login_required(login_url='login')
+def remove_item(request, item_id):
+    if request.method == "POST":
+        cart_item = get_object_or_404(CartItems, id=item_id)
+        cart_item.delete()
+    return redirect('cart')
+    # post 
