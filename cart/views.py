@@ -11,7 +11,14 @@ def add_to_cart(request, slug):
 
     user = request.user 
     cart , _ = Cart.objects.get_or_create(user=user, is_paid=False)
-    cart_item = CartItems.objects.create(cart=cart, product=product)
+    # cart_item = CartItems.objects.create(cart=cart, product=product)
+    cart_item , created = CartItems.objects.get_or_create(cart=cart, product=product)
+
+    if not created:
+        cart_item.quantity = cart_item.quantity + 1
+        cart_item.save()
+
+
 
     return redirect('cart')
 

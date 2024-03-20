@@ -33,7 +33,7 @@
                                     <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
+                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="{{i.quantity}}">
                                 <div class="input-group-btn">
                                     <button class="btn btn-sm btn-primary btn-plus">
                                         <i class="fa fa-plus"></i>
@@ -41,7 +41,13 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="align-middle">{{i.product.price}} PKR</td>
+                        <td class="align-middle" id="total_q"></td>
+
+                        <script>
+                            let total_q = document.getElementById('total_q')
+                            let mul = {{i.product.price}} * {{i.quantity}}
+                            total_q.innerText = mul + ' PKR'
+                        </script>
 
                         <form action="{% url 'remove_cart_item' i.id %}" method="post">
                             {% csrf_token %}
