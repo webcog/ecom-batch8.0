@@ -41,13 +41,9 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="align-middle" id="total_q"></td>
+                        <td class="align-middle">{{i.total_item_price}} PKR</td>
 
-                        <script>
-                            let total_q = document.getElementById('total_q')
-                            let mul = {{i.product.price}} * {{i.quantity}}
-                            total_q.innerText = mul + ' PKR'
-                        </script>
+                       
 
                         <form action="{% url 'remove_cart_item' i.id %}" method="post">
                             {% csrf_token %}

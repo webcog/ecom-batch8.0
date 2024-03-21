@@ -29,6 +29,10 @@ def cart(request):
     cart = Cart.objects.filter(user=request.user, is_paid=False).first()
     cart_items = CartItems.objects.filter(cart=cart)
 
+    for item in cart_items:
+        item.total_item_price = item.quantity * item.product.price
+    
+    
     subtotal = sum(item.total_price() for item in cart_items )
     # 2% shipping from subtotal     
     tax = 0.02 * subtotal
