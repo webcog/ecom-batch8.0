@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_countries',
     'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
