@@ -34,7 +34,7 @@ class Order(models.Model):
     status = models.CharField(max_length=50, choices=STATUS, default="New")
 
     def __str__(self):
-        return self.order_number
+        return self.first_name
     
 
 class OrderProduct(models.Model):

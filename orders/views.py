@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from orders.models import Order, OrderProduct
 from cart.models import Cart, CartItems
@@ -25,8 +25,22 @@ def checkout(request):
             order.tax = tax
             order.shipping_charges = shipping
             order.save()
+            for item in cart_items:
+                order_product = OrderProduct.objects.create(
+                    order=order,
+                    user=request.user,
+                    product=item.product,
+                    product_price=item.product.price,
+                    quantity=item.quantity,
+                    ordered=False
+                    
+                    )
+            cart.is_paid = True
+            cart.save()
+            return redirect('index')
             
-
+    else:
+        form = OrderForm()
 
 
 
@@ -37,5 +51,6 @@ def checkout(request):
         'shipping':shipping,
         'total':total,
         'tax':tax,
+        'form':form,
     }
     return render(request, 'orders/checkout.html', context)
