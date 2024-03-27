@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from orders.models import Order, OrderProduct
 from cart.models import Cart, CartItems
@@ -37,7 +37,7 @@ def checkout(request):
                     )
             cart.is_paid = True
             cart.save()
-            return redirect('index')
+            return redirect('order_detail')
             
     else:
         form = OrderForm()
@@ -54,3 +54,15 @@ def checkout(request):
         'form':form,
     }
     return render(request, 'orders/checkout.html', context)
+
+@login_required(login_url='login')
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order_product = OrderProduct.objects.filter(order=order)
+
+    context = {
+        'order':order,
+        'order_product':order_product,
+    }
+
+    return render(request, 'orders/order_detail.html', context)
